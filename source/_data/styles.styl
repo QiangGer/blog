@@ -1,7 +1,420 @@
-// 主页文章添加阴影效果
-.post-block{
+// Custom styles.
+// 页面头部背景
+.header {
+  background: url(https://cdn.yangbingdong.com/img/header/header_background.jpg);
+}
+
+// 子标题
+.site-subtitle {
+  font-size: 15px;
+  color: white;
+  font-family: 'Comic Sans MS', sans-serif;
+  display: inline-block;
+  background: black;
+}
+
+// 标题
+.site-title {
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+// 标题背景
+.brand {
+  background: transparent;
+}
+
+// 菜单栏
+.menu {
+  margin-top: 20px;
+  padding-left: 0;
+  text-align: center;
+  background: rgba(240, 240, 240, 0.5);
+  margin-left: auto;
+  margin-right: auto;
+  width: 530px;
+  border-radius: initial;
+  -webkit-box-shadow: 0 0 15px #590016;
+}
+
+// 菜单图表链接 以及 超链接样式
+a {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+a:hover {
+  color: #ff106c;
+  border-bottom-color: #ff106c;
+}
+
+// 菜单字体大小
+.menu .menu-item a {
+  font-size: 14px;
+}
+
+.menu .menu-item a:hover {
+  border-bottom-color: #ff106c;
+}
+
+
+// 文章背景框框
+.post-block {
   margin-top: 10px;
   margin-bottom: 40px;
   padding: 21px;
   -webkit-box-shadow: 0 0 7px #657b83;
 }
+
+//// disqus-proxy 评论框样式
+//#disqus_proxy_thread .post {
+//  opacity: 1 !important;
+//  box-shadow: none !important;
+//  -webkit-box-shadow: none !important;
+//}
+
+// 站点描述
+.site-description {
+  font-size: 16px;
+}
+
+// 头部inner
+.header-inner {
+  padding: 45px 0 25px;
+  width: 700px;
+}
+
+// 作者名
+.site-author-name {
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 20px;
+}
+
+// 文章之间的分割线
+.posts-expand .post-eof {
+  margin: 40px auto 40px;
+  background: white;
+}
+
+// 按钮样式
+.btn {
+  margin-top: 20px;
+}
+
+// ``代码块样式
+code {
+  color: #e6006b;
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #999;
+  border-radius: 0.4em;
+  font-size: 0.8em;
+  /* font-weight: 600; */
+  /* padding: 2px 4px; */
+  margin: 0 1px;
+}
+
+// 粗体字样式
+strong {
+  color: #750c0c;
+}
+
+// 引用块样式
+blockquote {
+  border-left: 5px solid #657b83;
+}
+
+.footer {
+  color: #555;
+}
+
+body {
+  color: #444;
+  font-size: 16px;
+  background: rgba(240, 240, 240, 0.1);
+}
+
+// sidebar里github前面 点的颜色
+.links-of-author a::before{
+  background: greenyellow
+}
+
+
+// 文章标题动态效果 next/source/css/_common/components/post/post-title.styl中.posts-expand .post-title-link确保`position: relative;`属性存在，如果需要标题呈现链接效果颜色，将`color`元素去除即可
+.posts-expand .post-title-link::before {
+  background-image: linear-gradient(90deg, #a166ab 0%, #ef4e7b 25%, #f37055 50%, #ef4e7b 75%, #a166ab 100%);
+}
+
+// 文章内标题样式（左边的竖线）
+.post-body h2, h3, h4, h5, h6 {
+  border-left: 4px solid #657b83;
+  padding-left: 10px;
+}
+
+.post-body h1 {
+  border-left: 5px solid #657b83;
+  padding-left: 10px;
+}
+
+//// 自定义的侧栏时间样式
+//#days {
+//  display: block;
+//  color: #fffa74;
+//  font-size: 14px;
+//  margin-top: 15px;
+//}
+
+// 文章```代码块顶部样式
+.highlight figcaption {
+  margin: 0em;
+  padding: 0.5em;
+  background: #eee;
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.highlight figcaption a {
+  color: rgb(80, 115, 184);
+}
+
+// 下载样式
+a#download {
+  display: inline-block;
+  padding: 0 10px;
+  color: #000;
+  background: transparent;
+  border: 2px solid #000;
+  border-radius: 2px;
+  transition: all .5s ease;
+  font-weight: bold;
+
+  &:hover {
+    background: #000;
+    color: #fff;
+  }
+}
+
+//颜色块-黄
+span#inline-yellow {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 80%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0;
+  background-color: #f0ad4e;
+}
+
+// 颜色块-绿
+span#inline-green {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 80%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0;
+  background-color: #5cb85c;
+}
+
+// 颜色块-蓝
+span#inline-blue {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 80%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0;
+  background-color: #2780e3;
+}
+
+// 颜色块-紫
+span#inline-purple {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 80%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0;
+  background-color: #9954bb;
+}
+
+// 左侧边框红色块级
+p#div-border-left-red {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-left-width: 5px;
+  border-radius: 3px;
+  border-left-color: #df3e3e;
+}
+
+// 左侧边框黄色块级
+p#div-border-left-yellow {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-left-width: 5px;
+  border-radius: 3px;
+  border-left-color: #f0ad4e;
+}
+
+// 左侧边框绿色块级
+p#div-border-left-green {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-left-width: 5px;
+  border-radius: 3px;
+  border-left-color: #5cb85c;
+}
+
+// 左侧边框蓝色块级
+p#div-border-left-blue {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-left-width: 5px;
+  border-radius: 3px;
+  border-left-color: #2780e3;
+}
+
+// 左侧边框紫色块级
+p#div-border-left-purple {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-left-width: 5px;
+  border-radius: 3px;
+  border-left-color: #9954bb;
+}
+
+// 右侧边框红色块级
+p#div-border-right-red {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-right-width: 5px;
+  border-radius: 3px;
+  border-right-color: #df3e3e;
+}
+
+// 右侧边框黄色块级
+p#div-border-right-yellow {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-right-width: 5px;
+  border-radius: 3px;
+  border-right-color: #f0ad4e;
+}
+
+// 右侧边框绿色块级
+p#div-border-right-green {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-right-width: 5px;
+  border-radius: 3px;
+  border-right-color: #5cb85c;
+}
+
+// 右侧边框蓝色块级
+p#div-border-right-blue {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-right-width: 5px;
+  border-radius: 3px;
+  border-right-color: #2780e3;
+}
+
+// 右侧边框紫色块级
+p#div-border-right-purple {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-right-width: 5px;
+  border-radius: 3px;
+  border-right-color: #9954bb;
+}
+
+// 上侧边框红色
+p#div-border-top-red {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-top-width: 5px;
+  border-radius: 3px;
+  border-top-color: #df3e3e;
+}
+
+// 上侧边框黄色
+p#div-border-top-yellow {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-top-width: 5px;
+  border-radius: 3px;
+  border-top-color: #f0ad4e;
+}
+
+// 上侧边框绿色
+p#div-border-top-green {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-top-width: 5px;
+  border-radius: 3px;
+  border-top-color: #5cb85c;
+}
+
+// 上侧边框蓝色
+p#div-border-top-blue {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-top-width: 5px;
+  border-radius: 3px;
+  border-top-color: #2780e3;
+}
+
+// 上侧边框紫色
+p#div-border-top-purple {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-top-width: 5px;
+  border-radius: 3px;
+  border-top-color: #9954bb;
+}
+

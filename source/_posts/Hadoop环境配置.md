@@ -1,13 +1,13 @@
 ---
 title: Hadoop环境配置
-date: 2020-01-16 11:53:38
+date: 2020-01-10 11:53:38
 categories: hadoop
 tags: hadoop
 ---
 
 # 前言
-> 本文配置hadoop的**单机模式**和**伪分布式模式**
-> hadoop依赖于Java环境，本文默认Java环境配置完毕。
+本文配置hadoop的**单机模式**和**伪分布式模式**
+hadoop依赖于Java环境，本文默认Java环境配置完毕。
 
 <!--more-->
 
@@ -21,7 +21,7 @@ tags: hadoop
 
 在`/opt`目录下创建一个文件夹，并将下载后的文件解压至此
 
-``` shell
+``` bash
 sudo mkdir /opt/modules
 sudo tar -zxvf hadoop-3.1.2.tar.gz -C /opt/modules
 ```
@@ -34,7 +34,7 @@ sudo tar -zxvf hadoop-3.1.2.tar.gz -C /opt/modules
 
 配置hadoop环境就是配置`hadoop-env.sh`，命令如下:
 
-``` shell
+``` bash
 cd /opt/modules/hadoop-3.1.2/etc/hadoop
 vim hadoop-env.sh
 # 可以在相应的注释部分添加以下内容，也可以直接添加在文件任何地方
@@ -49,7 +49,7 @@ export HADOOP_HOME=/opt/modules/hadoop-3.1.2
 
 配置完成后，可以使用如下命令检验：
 
-```  shell
+```  bash
 cd /opt/modules/hadoop-3.1.2
 bin/hadoop version
 # 能正常返回版本信息则安装完成
@@ -59,7 +59,7 @@ bin/hadoop version
 
 由上述命令可以看出，想要执行hadoop命令还是有一点麻烦的（需要进入hadoop的安装目录），因此可以将`bin`目录配置到shell变量里，使得命令可以在任何地方运行：
 
-``` shell
+``` bash
 cd ~
 # 我使用的是zsh，bash修改的是.bashrc
 vim .zshrc
@@ -94,13 +94,13 @@ wordcount是自带的一个demo，该例子是搜索input文件夹内所有文�
 
 具体使用方法为：
 
-``` shell
+``` bash
 hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.2.jar wordcount input output/wordcount
 ```
 
 结果可以使用`cat`查看：
 
-``` shell
+``` bash
 cat output/wordcount/part-r-00000
 ```
 
@@ -115,14 +115,14 @@ cat output/wordcount/part-r-00000
 
 集群、伪分布模式都需要用到 SSH 登陆，Ubuntu 默认已安装了 SSH client，此外还需要安装 SSH server：
 
-```bash
+``` bash
 sudo aptitude install openssh-server
 ## 笔者的电脑安装会出现依赖冲突，解决办法为卸载openssh-client后重新安装
 ```
 
 安装完成后可以使用如下命令查看：
 
-``` shell
+``` bash
 ps -e|grep ssh
 # 正常安装后会有两个服务：sshd和ssh-agent
 # sshd是服务端进程；ssh-agent是客户端进程
@@ -130,13 +130,13 @@ ps -e|grep ssh
 
 检查正常后，可以使用如下命令登陆本机：
 
-```bash
+``` bash
 ssh localhost
 ```
 
 一般情况下，上一个命令登录需要密码，我们需要将其配置成**免密码模式**
 
-``` shell
+``` bash
 ssh-keygen -t rsa              			# 生成一个秘钥。会有提示，都按回车就可以
 cat ./id_rsa.pub >> ./authorized_keys   # 加入授权
 chmod 644 authorized_keys 				# 设置文件权限
@@ -152,7 +152,7 @@ Hadoop 可以在单节点上以伪分布式的方式运行，Hadoop 进程以分
 
 Hadoop 的配置文件位于 .../hadoop/etc/hadoop/ 中，伪分布式需要修改2个配置文件 `core-site.xml` 和 `hdfs-site.xml` 。Hadoop的配置文件是 xml 格式，每个配置以声明 property 的 name 和 value 的方式来实现。
 
-``` shell
+``` bash
 # 修改配置文件 core-site.xml
 cd /opt/modules/hadoop-3.1.2
 vim etc/hadoop/core-site.xml
@@ -176,7 +176,7 @@ vim etc/hadoop/core-site.xml
 
 同样的，修改配置文件 `hdfs-site.xml`：
 
-```xml
+``` xml
 <configuration>
     <property>
         <name>dfs.replication</name>
@@ -201,7 +201,7 @@ vim etc/hadoop/core-site.xml
 
 配置完成后，使用如下命令进行NameNode的格式化：
 
-``` shell
+``` bash
 ./bin/hdfs namenode -format
 # 如果配置过环境变量，可以使用：
 hdfs namenode -format
@@ -213,7 +213,7 @@ hdfs namenode -format
 
 格式化完成后，就可以启动服务了：
 
-``` shell
+``` bash
 cd /opt/modules/hadoop-3.1.2
 ./sbin/start-dfs.sh
 # 可以将sbin目录配置进环境变量，简化启动命令
@@ -231,7 +231,7 @@ cd /opt/modules/hadoop-3.1.2
 
 在伪分布式环境下，系统读取的是hdfs文件系统数据，为了使用hdfs，首先需要创建用户目录。
 
-``` shell
+``` bash
 start-dfs.sh 								 # 开启服务
 cd /opt/modules/hadoop-3.1.2
 ./bin/hdfs dfs -mkdir -p /user/xcq
@@ -245,7 +245,7 @@ cd /opt/modules/hadoop-3.1.2
 准备工作好了后，就可以使用demo测试了：
 
 
-``` shell
+``` bash
 cd /opt/modules/hadoop-3.1.2
 hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.2.jar grep input output 'dfs[a-z.]+'
 hdfs dfs -get output ./output   # 将 hdfs 上的 output 文件夹拷贝到本机
