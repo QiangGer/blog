@@ -1,13 +1,13 @@
 ---
 title: Hadoop环境配置
-date: 2020-01-10 11:53:38
-categories: hadoop
-tags: hadoop
+date: 2020-01-17 19:53:38
+categories: Hadoop
+tags: Hadoop
 ---
 
 # 前言
-本文配置hadoop的**单机模式**和**伪分布式模式**
-hadoop依赖于Java环境，本文默认Java环境配置完毕。
+本文配置`Hadoop`的**单机模式**和**伪分布式模式**
+`Hadoop`依赖于`Java`环境，本文默认`Java`环境配置完毕。
 
 <!--more-->
 
@@ -26,13 +26,13 @@ sudo mkdir /opt/modules
 sudo tar -zxvf hadoop-3.1.2.tar.gz -C /opt/modules
 ```
 
-这里多说两句`/opt`。opt有可选的意思，`/opt`目录用来安装附加软件包，是用户级的程序目录，安装到/opt目录下的程序，它所有的数据、库文件等等都是放在同个目录下面。不需要它时，可以直接使用`rm -rf`删除，硬盘不够也可以将该目录挂在在其它硬盘。
+这里多说两句`/opt`。opt有可选的意思，`/opt`目录用来安装附加软件包，是用户级的程序目录，安装到`/opt`目录下的程序，它所有的数据、库文件等等都是放在同个目录下面。不需要它时，可以直接使用`rm -rf`删除，硬盘不够也可以将该目录挂在在其它硬盘。
 
 # 单机模式搭建
 
 ## 配置环境变量
 
-配置hadoop环境就是配置`hadoop-env.sh`，命令如下:
+配置`Hadoop`环境就是配置`hadoop-env.sh`，命令如下:
 
 ``` bash
 cd /opt/modules/hadoop-3.1.2/etc/hadoop
@@ -57,7 +57,7 @@ bin/hadoop version
 
 ## 配置bin目录至系统环境变量
 
-由上述命令可以看出，想要执行hadoop命令还是有一点麻烦的（需要进入hadoop的安装目录），因此可以将`bin`目录配置到shell变量里，使得命令可以在任何地方运行：
+由上述命令可以看出，想要执行`Hadoop`命令还是有一点麻烦的（需要进入`Hadoop`的安装目录），因此可以将`bin`目录配置到`shell`变量里，使得命令可以在任何地方运行：
 
 ``` bash
 cd ~
@@ -79,7 +79,7 @@ hadoop version
 
 这里再多说一句，就是要注意`PATH`和其余变量的位置，如果`PATH`放置在第一行，`source`后可以正常使用，但重启系统后变量就会失效。
 
-至此。hadoop的本地模式就配置完成了，可以使用自带的demo测试一下。
+至此。`Hadoop`的本地模式就配置完成了，可以使用自带的`demo`测试一下。
 
 ## 测试本地模式
 
@@ -87,10 +87,10 @@ hadoop version
 
 准备工作:
 
-1.创建input文件夹作为要测试的输入文件。 
-2.将hadoop目录里的etc/hadoop目录下的所有.xml结尾的文件复制到input里 
+1.创建`input`文件夹作为要测试的输入文件。 
+2.将`Hadoop`目录里的`etc/hadoop`目录下的所有`.xml`结尾的文件复制到`input`里 
 
-wordcount是自带的一个demo，该例子是搜索input文件夹内所有文件，统计所有单词出现的次数，并输出在output/wordcount文件夹里。 
+`wordcount`是自带的一个`demo`，该例子是搜索`input`文件夹内所有文件，统计所有单词出现的次数，并输出在`output/wordcount`文件夹里。 
 
 具体使用方法为：
 
@@ -104,7 +104,7 @@ hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.2.jar wordcount 
 cat output/wordcount/part-r-00000
 ```
 
-至此，hadoop的本地模式配置完成。
+至此，`Hadoop`的本地模式配置完成。
 
 
 
@@ -113,7 +113,7 @@ cat output/wordcount/part-r-00000
 
 ## 安装SSH、配置SSH无密码登陆
 
-集群、伪分布模式都需要用到 SSH 登陆，Ubuntu 默认已安装了 SSH client，此外还需要安装 SSH server：
+集群、伪分布模式都需要用到 `SSH` 登陆，`Ubuntu` 默认已安装了 `SSH client`，此外还需要安装 `SSH server`：
 
 ``` bash
 sudo aptitude install openssh-server
@@ -148,9 +148,9 @@ ssh-copy-id localhost
 
 ## 伪分布环境配置
 
-Hadoop 可以在单节点上以伪分布式的方式运行，Hadoop 进程以分离的 Java 进程来运行，**节点既作为 NameNode 也作为 DataNode**，同时，读取的是 HDFS 中的文件。
+`Hadoop` 可以在单节点上以伪分布式的方式运行，`Hadoop` 进程以分离的 `Java` 进程来运行，**节点既作为 NameNode 也作为 DataNode**，同时，读取的是 `HDFS` 中的文件。
 
-Hadoop 的配置文件位于 .../hadoop/etc/hadoop/ 中，伪分布式需要修改2个配置文件 `core-site.xml` 和 `hdfs-site.xml` 。Hadoop的配置文件是 xml 格式，每个配置以声明 property 的 name 和 value 的方式来实现。
+`Hadoop` 的配置文件位于 `.../hadoop/etc/hadoop/` 中，伪分布式需要修改2个配置文件 `core-site.xml` 和 `hdfs-site.xml` 。`Hadoop`的配置文件是 `xml` 格式，每个配置以声明 `property` 的 `name` 和 `value` 来实现。
 
 ``` bash
 # 修改配置文件 core-site.xml
@@ -195,11 +195,11 @@ vim etc/hadoop/core-site.xml
 
 **注**：
 
->Hadoop 的运行方式是由配置文件决定的（运行 Hadoop 时会读取配置文件），因此如果需要从伪分布式模式切换回非分布式模式，需要**删除** core-site.xml 中的配置项。
+>Hadoop 的运行方式是由配置文件决定的（运行 `Hadoop` 时会读取配置文件），因此如果需要从伪分布式模式切换回非分布式模式，需要**删除** `core-site.xml` 中的配置项。
 >
->此外，伪分布式虽然只需要配置 fs.defaultFS 和 dfs.replication 就可以运行（官方教程如此），不过若没有配置 hadoop.tmp.dir 参数，则默认使用的临时目录为 /tmp/hadoo-hadoop，而这个目录在重启时有可能被系统清理掉，导致必须重新执行 format 才行。所以我们进行了设置，同时也指定 dfs.namenode.name.dir 和 dfs.datanode.data.dir，否则在接下来的步骤中可能会出错。
+>此外，伪分布式虽然只需要配置 `fs.defaultFS` 和 `dfs.replication` 就可以运行（官方教程如此），不过若没有配置 `hadoop.tmp.dir` 参数，则默认使用的临时目录为 `/tmp/hadoo-hadoop`，而这个目录在重启时有可能被系统清理掉，导致必须重新执行 `format` 才行。所以我们进行了设置，同时也指定 `dfs.namenode.name.dir` 和 `dfs.datanode.data.dir`，否则在接下来的步骤中可能会出错。
 
-配置完成后，使用如下命令进行NameNode的格式化：
+配置完成后，使用如下命令进行`NameNode`的格式化：
 
 ``` bash
 ./bin/hdfs namenode -format
@@ -223,13 +223,13 @@ cd /opt/modules/hadoop-3.1.2
 
 ![hadoop-4](http://pic.xcq5120.xyz/hadoop/4.png)
 
-成功启动后，可以访问 Web 界面 [http://localhost:9870](http://localhost:9870/) 查看 NameNode 和 Datanode 信息，还可以在线查看 HDFS 中的文件。
+成功启动后，可以访问 `Web` 界面 [http://localhost:9870](http://localhost:9870/) 查看 `NameNode` 和 `Datanode` 信息，还可以在线查看 `HDFS` 中的文件。
 
-至此，hadoop的伪分布式搭建完毕，下面使用一个小demo来测试
+至此，`Hadoop`的伪分布式搭建完毕，下面使用一个小`demo`来测试
 
 ## 测试伪分布式
 
-在伪分布式环境下，系统读取的是hdfs文件系统数据，为了使用hdfs，首先需要创建用户目录。
+在伪分布式环境下，系统读取的是`hdfs`文件系统数据，为了使用`hdfs`，首先需要创建用户目录。
 
 ``` bash
 start-dfs.sh 								 # 开启服务
@@ -240,9 +240,9 @@ cd /opt/modules/hadoop-3.1.2
 ./bin/hdfs dfs -ls input					 # 查看目录内的文件列表
 ```
 
-在执行上述命令时，我们使用的是 xcq 用户，因此创建的相应用户目录为` /user/xcq` ，因此在命令中就可以使用相对路径如 input，其对应的绝对路径就是 `/user/xcq/input`
+在执行上述命令时，我们使用的是 xcq 用户，因此创建的相应用户目录为` /user/xcq` ，因此在命令中就可以使用相对路径如 `input`，其对应的绝对路径就是 `/user/xcq/input`
 
-准备工作好了后，就可以使用demo测试了：
+准备工作好了后，就可以使用`demo`测试了：
 
 
 ``` bash
@@ -253,9 +253,9 @@ hdfs dfs -rm -r output    		# 删除 output 文件夹
 ./sbin/stop-dfs.sh				# 关闭服务
 ```
 
-这里需要注意的是，Hadoop 运行程序时，输出目录不能存在，否则会提示错误 `org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory hdfs://localhost:9000/user/hadoop/output already exists`，因此若要正常执行，需要删除 output 文件夹。
+这里需要注意的是，`Hadoop` 运行程序时，输出目录不能存在，否则会提示错误 `org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory hdfs://localhost:9000/user/hadoop/output already exists`，因此若要正常执行，需要删除 `output` 文件夹。
 
 输出结果已经拷贝至系统文件夹。
 
-至此，hadoop的伪分布式部署和测试也已完成。
+至此，`Hadoop`的伪分布式部署和测试也已完成。
 
