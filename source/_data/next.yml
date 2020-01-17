@@ -94,7 +94,7 @@ footer:
 # CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org
 creative_commons:
   license: by-nc-sa
-  sidebar: false
+  sidebar: true
   post: false
   language:
 
@@ -121,10 +121,10 @@ scheme: Muse
 # External url should start with http:// or https://
 menu:
   home: / || home
-  about: /about/ || user
-  tags: /tags/ || tags # 标签
-  categories: /categories/ || th # 分类
   archives: /archives/ || archive # 归档
+  categories: /categories/ || th # 分类
+  tags: /tags/ || tags # 标签
+  about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
@@ -191,12 +191,13 @@ social:
   #YouTube: https://youtube.com/yourname || youtube
   #Instagram: https://instagram.com/yourname || instagram
   #Skype: skype:yourname?call|chat || skype
+RSS:
   RSS: /atom.xml || rss
 
 social_icons:
   enable: true
   icons_only: false
-  transition: false
+  transition: true
 
 # Blog rolls
 links_settings:
@@ -358,7 +359,7 @@ codeblock:
   highlight_theme: normal
   # Add copy button on codeblock
   copy_button:
-    enable: false
+    enable: true
     # Show text copy result.
     show_result: false
     # Available values: default | flat | mac
