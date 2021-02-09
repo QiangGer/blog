@@ -109,7 +109,7 @@ FsImage文件没有记录文件包含哪些块以及每个块存储在哪个数�
 
 •更多副本：随机
 
-![机架感知策略](http://pic.xcq5120.xyz/hdfs-rackAwareness.png)
+![机架感知策略](http://pic.xuecq.cc/hdfs-rackAwareness.png)
 
 ## HDFS的读取
 
@@ -151,7 +151,7 @@ public class Read {
 4. datanode与客户端建立**socket**连接，传输对应的数据块，客户端收到数据缓存到本地，之后写入文件。
 5. 依次传输剩下的数据块，直到整个文件合并完成。
 
-![hdfs-read](http://pic.xcq5120.xyz/hdfs-read.png)
+![hdfs-read](http://pic.xuecq.cc/hdfs-read.png)
 
 ## HDFS的写
 
@@ -187,7 +187,7 @@ public class Write {
 5. 为了保证节点数据准确，最后一个接收到数据的数据节点要向发送者发送**“确认包”**，确认包沿着数据流管道逆流而上，经过各个节点最终到达客户端，客户端收到应答时，它将对应的分包从内部队列移除。
 6. DFSOutputStream调用ClientProtocal.complete()方法通知名称节点关闭文件，结束写入。
 
-![hdfs-write](http://pic.xcq5120.xyz/hdfs-write.png)
+![hdfs-write](http://pic.xuecq.cc/hdfs-write.png)
 
 
 

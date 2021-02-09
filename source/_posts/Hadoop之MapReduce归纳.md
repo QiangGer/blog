@@ -65,7 +65,7 @@ Shuffle过程是MapReduce的核心，可分为Map端的Shuffle和Reduce端的Shu
 
 上述完成后，Map端的Shuffle就算结束了，下面用一张图回顾一下。
 
-<img src="http://pic.xcq5120.xyz/shuffle-mapShuffle.png" style="zoom: 50%;" />
+<img src="http://pic.xuecq.cc/shuffle-mapShuffle.png" style="zoom: 50%;" />
 
 
 
@@ -92,13 +92,13 @@ Copy过来的数据会先放入内存缓冲区中，这里的缓冲区大小要�
 ### 结束
 
 最终的<key，value list>，将会交给Reduce，按照业务逻辑进行处理，下面用一张图回顾一下Reduce端的Shuffle过程。
-![](http://pic.xcq5120.xyz/shuffle-reduceShuffle.png)
+![](http://pic.xuecq.cc/shuffle-reduceShuffle.png)
 
 ## 再看Shuffle
 
 Shuffle过程比较繁琐复杂，再用一张图总体表示一下。
 
-<img src="http://pic.xcq5120.xyz/shuffle.png" alt="Shuffle"  />
+<img src="http://pic.xuecq.cc/shuffle.png" alt="Shuffle"  />
 
 ## Shuffle调优
 

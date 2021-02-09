@@ -45,7 +45,7 @@ export HADOOP_HOME=/opt/modules/hadoop-3.1.2
 
 内容如下：
 
-![hadoop-1](http://pic.xcq5120.xyz/hadoop/1.png)
+![hadoop-1](http://pic.xuecq.cc/hadoop/1.png)
 
 配置完成后，可以使用如下命令检验：
 
@@ -75,7 +75,7 @@ hadoop version
 
 具体内容为：
 
-![hadoop-2](http://pic.xcq5120.xyz/hadoop/2.png)
+![hadoop-2](http://pic.xuecq.cc/hadoop/2.png)
 
 这里再多说一句，就是要注意`PATH`和其余变量的位置，如果`PATH`放置在第一行，`source`后可以正常使用，但重启系统后变量就会失效。
 
@@ -209,7 +209,7 @@ hdfs namenode -format
 
 正常情况下，会出现如下结果：
 
-![hadoop-3](http://pic.xcq5120.xyz/hadoop/3.png)
+![hadoop-3](http://pic.xuecq.cc/hadoop/3.png)
 
 格式化完成后，就可以启动服务了：
 
@@ -221,7 +221,7 @@ cd /opt/modules/hadoop-3.1.2
 
 启动完成后，可以通过命令 `jps` （这是用于 JVM 进程的 `ps` 实用程序）来判断是否成功启动，若成功启动则会列出如下进程: `NameNode`、`DataNode` 和 `SecondaryNameNode`
 
-![hadoop-4](http://pic.xcq5120.xyz/hadoop/4.png)
+![hadoop-4](http://pic.xuecq.cc/hadoop/4.png)
 
 成功启动后，可以访问 `Web` 界面 [http://localhost:9870](http://localhost:9870/) 查看 `NameNode` 和 `Datanode` 信息，还可以在线查看 `HDFS` 中的文件。
 

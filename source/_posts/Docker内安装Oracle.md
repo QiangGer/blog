@@ -86,7 +86,7 @@ ctrl + D
 
 在桌面环境使用`Navicat`连接即可可视化操作
 
-![1](http://pic.xcq5120.xyz/docker-aliyun.png)
+![1](http://pic.xuecq.cc/docker-aliyun.png)
 
 
 
